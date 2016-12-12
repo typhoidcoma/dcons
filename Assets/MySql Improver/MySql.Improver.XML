@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MySql.Improver</name>
+    </assembly>
+    <members>
+        <member name="T:MySql.Improver.Extensions">
+            <summary>
+            Contains all extension method.
+            </summary>
+        </member>
+        <member name="M:MySql.Improver.Extensions.IsUnique(System.Data.DataColumn)">
+            <summary>
+            Determines if the column is unique.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Improver.Extensions.GetBlob(MySql.Data.MySqlClient.MySqlDataReader,System.String)">
+            <summary>
+            Return BLOB data.
+            </summary>
+            <param name="name">Name of the field</param>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Improver.Extensions.GetBlob(MySql.Data.MySqlClient.MySqlDataReader,System.Int32)">
+            <summary>
+            Return BLOB data.
+            </summary>
+            <param name="i">Index of the field</param>
+            <returns></returns>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncEvent">
+            <summary>
+            It give access to the methods that allow to execute asynchronous queries to a MySql database.
+            </summary>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncEvent.OpenConnection(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Open a new Connection with a MySql database.
+            </summary>
+            <param name="server">Server address</param>
+            <param name="userid">Username</param>
+            <param name="password">Password</param>
+            <param name="db">Database name(Must be specified on Android)</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncEvent.CloseConnection">
+            <summary>
+            Close the current Connection with the MySql server.
+            </summary>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncEvent.ExecuteReader(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the data reader (Remember to close the reader first of execute a new query).
+            </summary>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncEvent.DescribeTable(System.String)">
+            <summary>
+            Gives infos about the specified table (Remember to close the reader first of execute a new query).
+            </summary>
+            <param name="table_name">Name of the table</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncEvent.ExecuteQuery(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the number of records -1 if the query fail.
+            </summary>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncEvent.ExecuteScalar(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the first object null if the query fail.
+            </summary>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncEvent.ExecuteFill(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the data set.
+            </summary>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+        </member>
+        <member name="E:MySql.Improver.MySqlAsyncEvent.OnOpenConnection">
+            <summary>
+            Occurs when the connection is opened.
+            </summary>
+        </member>
+        <member name="E:MySql.Improver.MySqlAsyncEvent.OnCloseConnection">
+            <summary>
+            Occurs when the connection is closed.
+            </summary>
+        </member>
+        <member name="E:MySql.Improver.MySqlAsyncEvent.OnExecuteQuery">
+            <summary>
+            Occurs when an "ExecuteQuery" ends the query.
+            </summary>
+        </member>
+        <member name="E:MySql.Improver.MySqlAsyncEvent.OnExecuteReader">
+            <summary>
+            Occurs when an "ExecuteReader" ends the query.
+            </summary>
+        </member>
+        <member name="E:MySql.Improver.MySqlAsyncEvent.OnDescribeTable">
+            <summary>
+            Occurs when an "DescribeTable" ends.
+            </summary>
+        </member>
+        <member name="E:MySql.Improver.MySqlAsyncEvent.OnExecuteScalar">
+            <summary>
+            Occurs when an "ExecuteScalar" ends the query.
+            </summary>
+        </member>
+        <member name="E:MySql.Improver.MySqlAsyncEvent.OnExecuteFill">
+            <summary>
+            Occurs when an "ExecuteFill" ends the query.
+            </summary>
+        </member>
+        <member name="E:MySql.Improver.MySqlAsyncEvent.OnException">
+            <summary>
+            Catch all exception.
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncEvent.EventHandlers">
+            <summary>
+            It give access to all delegates mathod needed for MySqlAsyncEvent.
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncEvent.EventHandlers.OnConnectionEventHandler">
+            <summary>
+            Delegate method OnConnection.
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncEvent.EventHandlers.OnExecuteReaderEventHandler">
+            <summary>
+            Delegate method OnExecuteReader.
+            </summary>
+            <param name="reader">DataReader returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncEvent.EventHandlers.OnDescribeTableEventHandler">
+            <summary>
+            Delegate method OnDescribeTable.
+            </summary>
+            <param name="reader">DataReader returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncEvent.EventHandlers.OnExecuteQueryEventHandler">
+            <summary>
+            Delegate method OnExecuteQuery.
+            </summary>
+            <param name="i">Integer returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncEvent.EventHandlers.OnExecuteScalarEventHandler">
+            <summary>
+            Delegate method OnExecuteScalar.
+            </summary>
+            <param name="obj">Object returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncEvent.EventHandlers.OnExecuteFillEventHandler">
+            <summary>
+            Delegate method OnExecuteFill.
+            </summary>
+            <param name="ds">DataSet returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncEvent.EventHandlers.OnExceptionEventHandler">
+            <summary>
+            Delegate method OnException.
+            </summary>
+            <param name="ex">Exception returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack">
+            <summary>
+            It give access to the methods that allow to execute asynchronous queries to a MySql database.
+            </summary>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncCallBack.OpenConnection(MySql.Improver.MySqlAsyncCallBack.CallBacks.ConnectionCallBack,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Open a new Connection with a MySql database.
+            </summary>
+            <param name="CallBackMethod">Method CallBacked</param>
+            <param name="server">Server address</param>
+            <param name="userid">Username</param>
+            <param name="password">Password</param>
+            <param name="db">Database name(Must be specified on Android)</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncCallBack.CloseConnection(MySql.Improver.MySqlAsyncCallBack.CallBacks.ConnectionCallBack)">
+            <summary>
+            Close the current Connection with the MySql server.
+            </summary>
+            <param name="CallBackMethod">Method CallBacked</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncCallBack.ExecuteReader(MySql.Improver.MySqlAsyncCallBack.CallBacks.ExecuteReaderCallBack,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the data reader (Remember to close the reader first of execute a new query).
+            </summary>
+            <param name="CallBackMethod">Method CallBacked</param>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncCallBack.DescribeTable(MySql.Improver.MySqlAsyncCallBack.CallBacks.DescribeTableCallBack,System.String)">
+            <summary>
+            Gives infos about the specified table (Remember to close the reader first of execute a new query).
+            </summary>
+            <param name="CallBackMethod">Method CallBacked</param>
+            <param name="table_name">Name of the table</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncCallBack.ExecuteQuery(MySql.Improver.MySqlAsyncCallBack.CallBacks.ExecuteQueryCallBack,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the number of records -1 if the query fail.
+            </summary>
+            <param name="CallBackMethod">Method CallBacked</param>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncCallBack.ExecuteScalar(MySql.Improver.MySqlAsyncCallBack.CallBacks.ExecuteScalarCallBack,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the first object null if the query fail.
+            </summary>
+            <param name="CallBackMethod">Method CallBacked</param>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlAsyncCallBack.ExecuteFill(MySql.Improver.MySqlAsyncCallBack.CallBacks.ExecuteFillCallBack,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the data set.
+            </summary>
+            <param name="CallBackMethod">Method CallBacked</param>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+        </member>
+        <member name="E:MySql.Improver.MySqlAsyncCallBack.OnException">
+            <summary>
+            Catch all exception.
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack.EventHandlers">
+            <summary>
+            It give access to all delegates mathod needed for MySqlAsyncCallBack.
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack.EventHandlers.OnExceptionEventHandler">
+            <summary>
+            Delegate method OnException.
+            </summary>
+            <param name="ex">Exception returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack.CallBacks">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack.CallBacks.ConnectionCallBack">
+            <summary>
+            CallBack delegate for OpenConnection and CloseConnection.
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack.CallBacks.ExecuteReaderCallBack">
+            <summary>
+            CallBack delegate for ExecuteReader.
+            </summary>
+            <param name="reader">DataReader returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack.CallBacks.DescribeTableCallBack">
+            <summary>
+            CallBack delegate for DescribeTable.
+            </summary>
+            <param name="reader"></param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack.CallBacks.ExecuteQueryCallBack">
+            <summary>
+            CallBack delegate for ExecuteQuery.
+            </summary>
+            <param name="i">Integer returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack.CallBacks.ExecuteScalarCallBack">
+            <summary>
+            CallBack delegate for ExecuteScalar.
+            </summary>
+            <param name="obj">Object returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlAsyncCallBack.CallBacks.ExecuteFillCallBack">
+            <summary>
+            CallBack delegate for ExecuteFill.
+            </summary>
+            <param name="ds">DataSet returned</param>
+        </member>
+        <member name="T:MySql.Improver.MySqlShared">
+            <summary>
+            It give access to all shared onbjects used by MySqlImprover.
+            </summary>
+        </member>
+        <member name="P:MySql.Improver.MySqlShared.Connection">
+            <summary>
+            Return the Connection object used from the lib.
+            </summary>
+        </member>
+        <member name="P:MySql.Improver.MySqlShared.ConnectionState">
+            <summary>
+            Return the state of the current connection.
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlSync">
+            <summary>
+            It give access to the methods that allow to execute synchronous queries to a MySql database.
+            </summary>
+        </member>
+        <member name="M:MySql.Improver.MySqlSync.OpenConnection(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Open a new Connection with a MySql database.
+            </summary>
+            <param name="server">Server address</param>
+            <param name="userid">Username</param>
+            <param name="password">Password</param>
+            <param name="db">Database name(Must be specified on Android)</param>
+        </member>
+        <member name="M:MySql.Improver.MySqlSync.CloseConnection">
+            <summary>
+            Close the current Connection with the MySql server.
+            </summary>
+        </member>
+        <member name="M:MySql.Improver.MySqlSync.ExecuteReader(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the data reader (Remember to close the reader first of execute a new query).
+            </summary>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Improver.MySqlSync.DescribeTable(System.String)">
+            <summary>
+            Gives infos about the specified table (Remember to close the reader first of execute a new query).
+            </summary>
+            <param name="table_name">Name of the table</param>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Improver.MySqlSync.ExecuteQuery(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the number of records -1 if the query fail.
+            </summary>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Improver.MySqlSync.ExecuteScalar(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the first object null if the query fail.
+            </summary>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+            <returns></returns>
+        </member>
+        <member name="M:MySql.Improver.MySqlSync.ExecuteFill(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            Execute a query and return the data set.
+            </summary>
+            <param name="query">The query you want execute</param>
+            <param name="param">The parameters for the query</param>
+            <returns></returns>
+        </member>
+        <member name="E:MySql.Improver.MySqlSync.OnException">
+            <summary>
+            EventHandler OnException.
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlSync.EventHandlers">
+            <summary>
+            It give access to all delegates mathod needed for MySqlSync.
+            </summary>
+        </member>
+        <member name="T:MySql.Improver.MySqlSync.EventHandlers.OnExceptionEventHandler">
+            <summary>
+            Delegate method OnException.
+            </summary>
+            <param name="ex">Exception returned</param>
+        </member>
+    </members>
+</doc>
